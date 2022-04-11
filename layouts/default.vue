@@ -104,6 +104,16 @@ export default {
         },
         {
           icon: 'mdi-chart-bubble',
+          title: 'Posts',
+          to: '/posts'
+        },
+        {
+          icon: 'mdi-chart-bubble',
+          title: 'Users',
+          to: '/inspire'
+        },
+        {
+          icon: 'mdi-chart-bubble',
           title: 'Inspire',
           to: '/inspire'
         }
