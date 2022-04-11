@@ -7,6 +7,7 @@
       fixed
       app
     >
+      <h1>{{testeee | truncate(5)}}</h1>
       <v-list>
         <v-list-item
           v-for="(item, i) in items"
@@ -96,6 +97,7 @@ export default {
       clipped: false,
       drawer: false,
       fixed: false,
+      testeee: 'sdfasçfjasd fsdfj asdfj aksfld ajdslfa dfa d',
       items: [
         {
           icon: 'mdi-apps',
@@ -110,7 +112,12 @@ export default {
         {
           icon: 'mdi-chart-bubble',
           title: 'Users',
-          to: '/inspire'
+          to: '/users'
+        },
+        {
+          icon: 'mdi-chart-bubble',
+          title: 'User',
+          to: '/users/:id'
         },
         {
           icon: 'mdi-chart-bubble',
@@ -123,6 +130,15 @@ export default {
       rightDrawer: false,
       title: 'Vuetify.js'
     }
+  },
+  filters: {
+    truncate: function (text, length, suffix = '...') {
+      if (text.length > length) {
+        return text.substring(0, length) + suffix;
+      } else {
+        return text;
+      }
+    },
   }
 }
 </script>
