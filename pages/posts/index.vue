@@ -41,8 +41,10 @@
 </template>
 
 <script>
+import global from "../../mixins/global";
 import filter from '../../plugins/filters'
 export default {
+  mixins: [global],
   async asyncData({ $axios }) {
     const posts = await $axios.$get('posts')
     // const comments = await $axios.$get('posts/post_id/comments')

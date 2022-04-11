@@ -12,10 +12,10 @@
         <v-col col="12" sm="12">
 
             <v-card class="card-bg">
-              <v-card-title>{{ post.title | truncate(50)}}</v-card-title>
+              <v-card-title>{{ post.title}}</v-card-title>
               <v-card-subtitle>Learn Web Development In Chunks</v-card-subtitle>
               <v-card-text
-              >{{post.body| truncate(80)}}
+              >{{post.body}}
               </v-card-text
               >
             </v-card>

@@ -10,27 +10,16 @@
       <v-row>
 
         <v-col col="12" lg="6" md="6" :key="id" v-for="{ id, name, email, gender, status } in users">
-          <nuxt-link v-if="title !== 'foo'" :to="`users/${id}`">
+          <nuxt-link :to="`users/${id}`">
             <v-card class="card-bg">
-              <v-card-title>{{ name | truncate(50)}}</v-card-title>
+              <v-card-title>{{ name}}</v-card-title>
               <v-card-subtitle>{{email}}</v-card-subtitle>
               <v-card-text
-              >{{gender| truncate(80)}} - {{status}}
+              >{{gender_i18n(gender)}} - {{status_i18n(status)}}
               </v-card-text
               >
             </v-card>
           </nuxt-link>
-        </v-col>
-
-        <v-col col="12">
-          <v-card class="card-bg-dark">
-            <v-card-title>Chunk Bytes</v-card-title>
-            <v-card-subtitle>Learn Web Development In Chunks</v-card-subtitle>
-            <v-card-text
-            >Joke of the Day: debugging is removing the needles from the haystack.
-            </v-card-text
-            >
-          </v-card>
         </v-col>
 
       </v-row>
@@ -39,7 +28,10 @@
 </template>
 
 <script>
+
+import global from "../../mixins/global";
 export default {
+  mixins: [global],
   async asyncData({ $axios }) {
     const users = await $axios.$get('users')
     return { users }

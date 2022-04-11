@@ -1,73 +1,72 @@
 <template>
   <v-app dark>
     <v-navigation-drawer
-      v-model="drawer"
-      :mini-variant="miniVariant"
-      :clipped="clipped"
-      fixed
-      app
+        v-model="drawer"
+        :mini-variant="miniVariant"
+        :clipped="clipped"
+        fixed
+        app
     >
-      <h1>{{testeee | truncate(5)}}</h1>
       <v-list>
         <v-list-item
-          v-for="(item, i) in items"
-          :key="i"
-          :to="item.to"
-          router
-          exact
+            v-for="(item, i) in items"
+            :key="i"
+            :to="item.to"
+            router
+            exact
         >
           <v-list-item-action>
             <v-icon>{{ item.icon }}</v-icon>
           </v-list-item-action>
           <v-list-item-content>
-            <v-list-item-title v-text="item.title" />
+            <v-list-item-title v-text="item.title"/>
           </v-list-item-content>
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
     <v-app-bar
-      :clipped-left="clipped"
-      fixed
-      app
+        :clipped-left="clipped"
+        fixed
+        app
     >
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
+      <v-app-bar-nav-icon @click.stop="drawer = !drawer"/>
       <v-btn
-        icon
-        @click.stop="miniVariant = !miniVariant"
+          icon
+          @click.stop="miniVariant = !miniVariant"
       >
         <v-icon>mdi-{{ `chevron-${miniVariant ? 'right' : 'left'}` }}</v-icon>
       </v-btn>
       <v-btn
-        icon
-        @click.stop="clipped = !clipped"
+          icon
+          @click.stop="clipped = !clipped"
       >
         <v-icon>mdi-application</v-icon>
       </v-btn>
       <v-btn
-        icon
-        @click.stop="fixed = !fixed"
+          icon
+          @click.stop="fixed = !fixed"
       >
         <v-icon>mdi-minus</v-icon>
       </v-btn>
-      <v-toolbar-title v-text="title" />
-      <v-spacer />
+      <v-toolbar-title v-text="title"/>
+      <v-spacer/>
       <v-btn
-        icon
-        @click.stop="rightDrawer = !rightDrawer"
+          icon
+          @click.stop="rightDrawer = !rightDrawer"
       >
         <v-icon>mdi-menu</v-icon>
       </v-btn>
     </v-app-bar>
     <v-main>
       <v-container>
-        <Nuxt />
+        <Nuxt/>
       </v-container>
     </v-main>
     <v-navigation-drawer
-      v-model="rightDrawer"
-      :right="right"
-      temporary
-      fixed
+        v-model="rightDrawer"
+        :right="right"
+        temporary
+        fixed
     >
       <v-list>
         <v-list-item @click.native="right = !right">
@@ -81,8 +80,8 @@
       </v-list>
     </v-navigation-drawer>
     <v-footer
-      :absolute="!fixed"
-      app
+        :absolute="!fixed"
+        app
     >
       <span>&copy; {{ new Date().getFullYear() }}</span>
     </v-footer>
@@ -92,12 +91,11 @@
 <script>
 export default {
   name: 'DefaultLayout',
-  data () {
+  data() {
     return {
       clipped: false,
       drawer: false,
       fixed: false,
-      testeee: 'sdfasçfjasd fsdfj asdfj aksfld ajdslfa dfa d',
       items: [
         {
           icon: 'mdi-apps',
@@ -116,11 +114,6 @@ export default {
         },
         {
           icon: 'mdi-chart-bubble',
-          title: 'User',
-          to: '/users/:id'
-        },
-        {
-          icon: 'mdi-chart-bubble',
           title: 'Inspire',
           to: '/inspire'
         }
@@ -130,15 +123,6 @@ export default {
       rightDrawer: false,
       title: 'Vuetify.js'
     }
-  },
-  filters: {
-    truncate: function (text, length, suffix = '...') {
-      if (text.length > length) {
-        return text.substring(0, length) + suffix;
-      } else {
-        return text;
-      }
-    },
   }
 }
 </script>
