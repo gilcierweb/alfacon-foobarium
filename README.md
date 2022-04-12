@@ -1,4 +1,13 @@
-# alfacon-forum
+# Project alfacon-forum
+
+## Skills
+- JS
+- NodeJS
+- VueJS
+- NuxtJS SSR
+- VuetifyJS IU
+- Docker
+- Docker Compose
 
 ## Setup with Docker and Docker Compose
 ```shell
