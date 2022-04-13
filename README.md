@@ -6,14 +6,24 @@
 - VueJS
 - NuxtJS SSR
 - VuetifyJS IU
+- Boostrap
 - Docker
 - Docker Compose
 
+## Install dependency
+### Docker
+https://docs.docker.com/engine/install/ubuntu/
+### Docker Compose
+https://docs.docker.com/compose/install/
+
 ## Setup with Docker and Docker Compose
 ```shell
+cd alfacon-forum
+
 docker-compose build
 docker-compose up -d
 # run http://localhost:3000
+
 docker-compose ps
 docker-compose stop
 

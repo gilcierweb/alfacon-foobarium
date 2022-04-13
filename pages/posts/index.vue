@@ -2,10 +2,7 @@
   <div>
     <v-container class="background-dark">
 
-      <v-col col="12">
-        <h2>Posts</h2>
-        <v-divider></v-divider>
-      </v-col>
+      <HeaderPages title="Posts"></HeaderPages>
 
       <v-row>
 
@@ -20,10 +17,11 @@
                   <path fill-rule="evenodd" clip-rule="evenodd" d="M7.69238 35.7658V27.6924C7.69238 23.6001 15.8924 21.5386 20.0001 21.5386C24.1078 21.5386 32.3078 23.6001 32.3078 27.6924V35.7657C28.914 38.4189 24.6417 40.0001 20 40.0001C15.3584 40.0001 11.0861 38.4189 7.69238 35.7658Z" fill="white"/>
                 </svg>
 
-                <h3 class="text-h4 font-weight-light card-title-color ma-3">JONH USERNAME</h3> <span class="text-h6 font-weight-light card-title-span-color ma-3">12 posts</span>
+                <h3 class="text-h5 font-weight-light card-title-color ma-3">JONH USERNAME</h3>
+                <span class="text-h6 font-weight-light card-title-span-color ma-3">12 posts</span>
               </v-card-title>
 
-              <v-card-title><h2>{{ title | truncate(40) }}</h2></v-card-title>
+              <v-card-title><h1 class="font-weight-bold">{{ title }}</h1></v-card-title>
               <v-card-text>{{ body| truncate(80) }}</v-card-text>
 
               <v-card-actions class="pt-0">
@@ -85,9 +83,12 @@ export default {
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.25);
   border-radius: 15px;
 }
-.card-title-color{
+
+.card-title-color {
   color: #DDDDDD;
-}.card-title-span-color{
+}
+
+.card-title-span-color {
   color: #CCCCCC;
 }
 </style>

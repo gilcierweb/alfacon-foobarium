@@ -10,8 +10,9 @@
     background-color: #41434B;
 }
 .sidebar-bg{
-    background-color: #545760;
+    background-color: #545760 !important;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 58.62%, rgba(0, 0, 0, 0.2) 91.75%), #545760 !important;
 }
 .header-bg{
-    background-color: #545760;
+    background-color: #41434B !important;
 }
