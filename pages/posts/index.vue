@@ -6,9 +6,9 @@
 
       <v-row>
 
-        <v-col col="12" lg="6" md="6" sm="12" :key="id" v-for="{ id, user_id, title, body } in posts">
-          <nuxt-link v-if="title !== 'foo'" :to="`posts/${id}`">
-            <v-card class="card-bg">
+        <v-col col="12" xl="4" lg="6" md="6" sm="12" :key="id" v-for="{ id, user_id, title, body, user_name, user_posts_count, post_comments_count } in posts">
+          <nuxt-link :to="`posts/${id}`">
+            <v-card class="card-bg card-size-min">
               <v-card-title>
 
                 <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -17,16 +17,17 @@
                   <path fill-rule="evenodd" clip-rule="evenodd" d="M7.69238 35.7658V27.6924C7.69238 23.6001 15.8924 21.5386 20.0001 21.5386C24.1078 21.5386 32.3078 23.6001 32.3078 27.6924V35.7657C28.914 38.4189 24.6417 40.0001 20 40.0001C15.3584 40.0001 11.0861 38.4189 7.69238 35.7658Z" fill="white"/>
                 </svg>
 
-                <h3 class="text-h5 font-weight-light card-title-color ma-3">JONH USERNAME</h3>
-                <span class="text-h6 font-weight-light card-title-span-color ma-3">12 posts</span>
+                <h3 class="text-h5 font-weight-bold card-title-color ma-3">{{ user_name }}</h3>
+                <span class="text-h6 font-weight-light card-title-span-color ma-3">{{ user_posts_count }} posts</span>
               </v-card-title>
 
-              <v-card-title><h1 class="font-weight-bold">{{ title }}</h1></v-card-title>
+              <v-card-title><h1 class="font-weight-bold" :title="title">{{ title | truncate(70, '...') }}</h1>
+              </v-card-title>
               <v-card-text>{{ body| truncate(80) }}</v-card-text>
 
               <v-card-actions class="pt-0">
                 <v-btn text color="teal accent-4" @click="reveal = false">
-                  12 comments
+                  {{ post_comments_count }} comments
                 </v-btn>
               </v-card-actions>
             </v-card>
@@ -57,9 +58,34 @@ import filter from '../../plugins/filters'
 export default {
   mixins: [global],
   async asyncData({$axios}) {
+    let posts_users = []
+
     const posts = await $axios.$get('posts')
-    // const comments = await $axios.$get('posts/post_id/comments')
-    return {posts}
+
+    posts.map(async function (value, key) {
+      let user_id = value.user_id
+      let post_id = value.id
+
+      const user = await $axios.$get(`users/${user_id}`)
+      const user_posts = await $axios.$get(`users/${user_id}/posts`)
+      const post_comments = await $axios.$get(`posts/${post_id}/comments`)
+
+      posts_users.push(
+          {
+            id: value.id,
+            title: value.title,
+            body: value.body,
+            user_id: user_id,
+            user_name: user.name,
+            user_posts_count: user_posts.length,
+            post_comments_count: post_comments.length
+          }
+      )
+
+    });
+
+    return {posts: posts_users}
+
   },
 
 

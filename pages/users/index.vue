@@ -6,7 +6,7 @@
 
       <v-row>
 
-        <v-col col="12" lg="6" md="6" :key="id" v-for="{ id, name, email, gender, status } in users">
+        <v-col col="12" xl="4" lg="6" md="6" sm="12" :key="id" v-for="{ id, name, email, gender, status } in users">
           <nuxt-link :to="`users/${id}`">
             <v-card class="card-bg">
               <v-card-title>
@@ -17,7 +17,7 @@
                   <path fill-rule="evenodd" clip-rule="evenodd" d="M7.69238 35.7658V27.6924C7.69238 23.6001 15.8924 21.5386 20.0001 21.5386C24.1078 21.5386 32.3078 23.6001 32.3078 27.6924V35.7657C28.914 38.4189 24.6417 40.0001 20 40.0001C15.3584 40.0001 11.0861 38.4189 7.69238 35.7658Z" fill="white"/>
                 </svg>
 
-                <h3 class="text-h4 font-weight-light card-title-color ma-3">{{ name }}</h3>
+                <h3 class="text-h6 font-weight-light card-title-color ma-3">{{ name }}</h3>
                 <span class="text-h6 font-weight-light card-title-span-color ma-3">12 posts</span>
               </v-card-title>
               <v-card-subtitle>{{ email }}</v-card-subtitle>

@@ -12,6 +12,7 @@
 
         <v-list-item v-for="(item, i) in items" :key="i" :to="item.to" router exact>
           <v-list-item-action>
+            <span class="menu-rectangle"></span>
             <v-icon>{{ item.icon }}</v-icon>
           </v-list-item-action>
           <v-list-item-content>
@@ -20,6 +21,26 @@
         </v-list-item>
 
       </v-list>
+
+      <template v-slot:append>
+
+        <div class="pa-2">
+          <nuxt-link to="/">
+            <v-list-item class="mt-2 mb-6">
+              <span class="menu-rectangle pa-0"></span>
+              <v-list-item-title>My Posts</v-list-item-title>
+            </v-list-item>
+          </nuxt-link>
+          <nuxt-link to="/">
+            <v-list-item class="mt-2 mb-6">
+              <v-list-item-title>My Posts</v-list-item-title>
+            </v-list-item>
+          </nuxt-link>
+          <v-btn block>
+            Logout
+          </v-btn>
+        </div>
+      </template>
     </v-navigation-drawer>
 
     <v-app-bar :clipped-left="clipped" fixed app class="header-bg">
@@ -102,12 +123,12 @@ export default {
         {
           icon: 'mdi-note-edit-outline',
           title: 'My Posts',
-          to: '/inspire'
+          to: '/posts/show'
         },
         {
           icon: 'mdi-comment-processing-outline',
           title: 'My Comments',
-          to: '/inspire'
+          to: '/posts/comments'
         }
       ],
       miniVariant: false,

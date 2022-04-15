@@ -85,7 +85,7 @@ export default {
         }
       }
       let post_id = this.$route.params.id
-      const data = {body: this.body,}
+      const data = {body: this.body, name: 'gilweb', email: 'gil@mail.com'}
       const comment = await this.$axios.post(`/posts/${post_id}/comments`, data, headers)
       return {comment}
     },

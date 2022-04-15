@@ -6,7 +6,7 @@
 - VueJS
 - NuxtJS SSR
 - VuetifyJS IU
-- Boostrap
+- Bootstrap
 - Docker
 - Docker Compose
 
@@ -44,6 +44,9 @@ $ yarn start
 # generate static project
 $ yarn generate
 ```
+## Config Token
+For create posts, comments and users, create before token on API here URL
+https://gorest.co.in/my-account/access-tokens
 
 For detailed explanation on how things work, check out the [documentation](https://nuxtjs.org).
 

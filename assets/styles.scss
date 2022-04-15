@@ -16,4 +16,31 @@ $font-family:'Montserrat';
 .card-bg-details{
   background-color: #41434B !important;
 }
-
+.card-size-min{
+  min-height: 486px !important;
+}
+.v-list-item:hover {
+  background-color: #2AA3AF !important;
+}
+.item--active::before {
+  opacity: 1;
+}
+.theme--dark.v-list-item--active:hover::before, .theme--dark.v-list-item--active::before {
+  opacity: 1;
+  color: #00F0FF !important;
+}
+.v-list-item--link:before {
+  color: #00F0FF !important;
+  background-color: #41434B !important;
+}
+.menu-rectangle:hover{
+  width: 10px;
+  height: 60px;
+  background-color: #FA00FF !important;
+}
+.menu-list{
+  background-color: #41434B;
+  &hover{
+    background-color: #2AA3AF;
+  }
+}
