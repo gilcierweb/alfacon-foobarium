@@ -20,10 +20,17 @@ https://docs.docker.com/compose/install/
 ```shell
 cd alfacon-forum
 
+# with docker
+docker build -t alfacon-forum .
+docker run -it -p 3000:3000  alfacon-forum
+# run  http://localhost:3000
+docker ps -a
+docker stop container_id
+
+# with docker compose
 docker-compose build
 docker-compose up -d
-# run http://localhost:3000
-
+# run http://localhost:3000 or  http://localhost with nginx server run port 80
 docker-compose ps
 docker-compose stop
 
