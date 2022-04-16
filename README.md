@@ -29,7 +29,9 @@ docker stop container_id
 
 # with docker compose
 docker-compose build
+docker compose up -d --build
 docker-compose up -d
+
 # run http://localhost:3000 or  http://localhost with nginx server run port 80
 docker-compose ps
 docker-compose stop
