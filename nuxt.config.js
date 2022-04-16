@@ -43,7 +43,7 @@ export default {
   ],
 
   axios: {
-    baseURL: 'https://gorest.co.in/public/v2/',
+    baseURL: process.env.BASE_URL,
   },
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify

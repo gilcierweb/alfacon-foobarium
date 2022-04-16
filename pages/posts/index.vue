@@ -6,6 +6,14 @@
 
       <v-row>
 
+<!--        <v-progress-circular-->
+<!--            :size="70"-->
+<!--            :width="7"-->
+<!--            color="purple"-->
+<!--            indeterminate-->
+
+<!--        ></v-progress-circular>-->
+
         <v-col col="12" xl="4" lg="6" md="6" sm="12" :key="id" v-for="{ id, user_id, title, body, user_name, user_posts_count, post_comments_count } in posts">
           <nuxt-link :to="`posts/${id}`">
             <v-card class="card-bg card-size-min">
@@ -17,13 +25,13 @@
                   <path fill-rule="evenodd" clip-rule="evenodd" d="M7.69238 35.7658V27.6924C7.69238 23.6001 15.8924 21.5386 20.0001 21.5386C24.1078 21.5386 32.3078 23.6001 32.3078 27.6924V35.7657C28.914 38.4189 24.6417 40.0001 20 40.0001C15.3584 40.0001 11.0861 38.4189 7.69238 35.7658Z" fill="white"/>
                 </svg>
 
-                <h3 class="text-h5 font-weight-bold card-title-color ma-3">{{ user_name }}</h3>
+                <h3 class="text-h5 font-weight-bold card-title-color ma-3 text-uppercase">{{ user_name }}</h3>
                 <span class="text-h6 font-weight-light card-title-span-color ma-3">{{ user_posts_count }} posts</span>
               </v-card-title>
 
               <v-card-title><h1 class="font-weight-bold" :title="title">{{ title | truncate(70, '...') }}</h1>
               </v-card-title>
-              <v-card-text>{{ body| truncate(80) }}</v-card-text>
+              <v-card-text>{{ body| truncate(230, '...') }}</v-card-text>
 
               <v-card-actions class="pt-0">
                 <v-btn text color="teal accent-4" @click="reveal = false">
@@ -57,30 +65,42 @@ import filter from '../../plugins/filters'
 
 export default {
   mixins: [global],
+  // data() {
+  //   return {
+  //       isLoadingIcon: 1,
+  //   }
+  // },
+
   async asyncData({$axios}) {
     let posts_users = []
 
     const posts = await $axios.$get('posts')
 
     posts.map(async function (value, key) {
-      let user_id = value.user_id
-      let post_id = value.id
+      try {
+        let user_id = value.user_id
+        let post_id = value.id
 
-      const user = await $axios.$get(`users/${user_id}`)
-      const user_posts = await $axios.$get(`users/${user_id}/posts`)
-      const post_comments = await $axios.$get(`posts/${post_id}/comments`)
+        const user = await $axios.$get(`users/${user_id}`)
+        const user_posts = await $axios.$get(`users/${user_id}/posts`)
+        const post_comments = await $axios.$get(`posts/${post_id}/comments`)
 
-      posts_users.push(
-          {
-            id: value.id,
-            title: value.title,
-            body: value.body,
-            user_id: user_id,
-            user_name: user.name,
-            user_posts_count: user_posts.length,
-            post_comments_count: post_comments.length
-          }
-      )
+        if (user) {
+          posts_users.push(
+              {
+                id: value.id,
+                title: value.title,
+                body: value.body,
+                user_id: user_id,
+                user_name: user.name,
+                user_posts_count: user_posts.length,
+                post_comments_count: post_comments.length
+              }
+          )
+        }
+      } catch (error) {
+        // console.log(error)
+      }
 
     });
 

@@ -78,7 +78,9 @@
 
     <v-main>
       <v-container>
+        <v-slide-x-transition mode="out-in">
         <Nuxt/>
+        </v-slide-x-transition>
       </v-container>
     </v-main>
 
