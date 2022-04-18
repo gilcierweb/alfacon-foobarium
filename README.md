@@ -1,5 +1,42 @@
-# alfacon-forum
+# Project alfacon-forum
 
+## Skills
+- JS
+- NodeJS
+- VueJS
+- NuxtJS SSR
+- VuetifyJS UI
+- Bootstrap
+- Docker
+- Docker Compose
+
+## Install dependency
+### Docker
+https://docs.docker.com/engine/install/ubuntu/
+### Docker Compose
+https://docs.docker.com/compose/install/
+
+## Setup with Docker and Docker Compose
+```shell
+cd alfacon-forum
+
+# with docker
+docker build -t alfacon-forum .
+docker run -it -p 3000:3000  alfacon-forum
+# run  http://localhost:3000
+docker ps -a
+docker stop container_id
+
+# with docker compose
+docker-compose build
+docker compose up -d --build
+docker-compose up -d
+
+# run http://localhost:3000 or  http://localhost with nginx server run port 80
+docker-compose ps
+docker-compose stop
+
+```
 ## Build Setup
 
 ```bash
@@ -15,6 +52,19 @@ $ yarn start
 
 # generate static project
 $ yarn generate
+```
+## Config Token
+For create posts, comments and users, create before token on API here URL
+https://gorest.co.in/my-account/access-tokens
+
+```shell
+# .env
+cp .env-example .env
+BASE_URL=https://gorest.co.in/public/v2/
+ACCESS_TOKEN='MY-TOKEN-API'
+NUXT_HOST=0.0.0.0
+NUXT_PORT=3000
+
 ```
 
 For detailed explanation on how things work, check out the [documentation](https://nuxtjs.org).
@@ -67,3 +117,6 @@ More information about the usage of this directory in [the documentation](https:
 This directory contains your Vuex store files. Creating a file in this directory automatically activates Vuex.
 
 More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/store).
+
+### website
+https://gilcierweb.com.br/

@@ -3,16 +3,17 @@ import colors from 'vuetify/es5/util/colors'
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    titleTemplate: '%s - alfacon-forum',
+    titleTemplate: '%s - alfacon-forum - GilcierWeb',
     title: 'alfacon-forum',
     htmlAttrs: {
-      lang: 'en'
+      lang: 'pt-BR'
     },
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' },
-      { name: 'format-detection', content: 'telephone=no' }
+      { hid: 'description', name: 'description', content: 'AlfaCon - Teste - GilcierWeb' },
+      { name: 'author', content: 'GilcierWeb - Web Developer - gilcierweb@gmail.com - gilcier06@yahoo.com.br - Sites, Sistemas para Web, E-commerce, Manutenção de Sites. gilcierweb.com.br' },
+      { name: 'format-detection', content: 'telephone=no' },
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
@@ -38,7 +39,24 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
+    '@nuxtjs/axios'
   ],
+  // publicRuntimeConfig: {
+  //   baseURL: process.env.BASE_URL,
+  //   host: process.env.NUXT_HOST,
+  //   port: process.env.NUXT_PORT,
+  // },
+  // privateRuntimeConfig: {
+  //   ACCESS_TOKEN: process.env.ACCESS_TOKEN
+  // },
+  axios: {
+    baseURL: process.env.BASE_URL,
+  },
+
+  server: {
+    host: process.env.NUXT_HOST,
+    port: process.env.NUXT_PORT,
+  },
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
@@ -58,7 +76,12 @@ export default {
       }
     }
   },
-
+  loading: {
+    color: 'DodgerBlue',
+    height: '10px',
+    continuous: true,
+    duration: 3000
+  },
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
   }
