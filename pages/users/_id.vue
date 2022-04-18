@@ -32,7 +32,7 @@
         <v-col col="12" lg="112" md="12" sm="12" :key="id" v-for="{ id, user_id, title, body } in posts">
           <nuxt-link v-if="title !== 'foo'" :to="`/posts/${id}`">
             <v-card class="card-bg-dark">
-              <v-card-title><h1 class="font-weight-bold" :title="title">{{ title }}</h1></v-card-title>
+              <v-card-title><h1 class="font-weight-bold title-posts" :title="title">{{ title }}</h1></v-card-title>
               <v-card-text
               >{{ body | truncate(80) }}
               </v-card-text

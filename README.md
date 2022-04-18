@@ -5,7 +5,7 @@
 - NodeJS
 - VueJS
 - NuxtJS SSR
-- VuetifyJS IU
+- VuetifyJS UI
 - Bootstrap
 - Docker
 - Docker Compose
@@ -56,6 +56,16 @@ $ yarn generate
 ## Config Token
 For create posts, comments and users, create before token on API here URL
 https://gorest.co.in/my-account/access-tokens
+
+```shell
+# .env
+cp .env-example .env
+BASE_URL=https://gorest.co.in/public/v2/
+ACCESS_TOKEN='MY-TOKEN-API'
+NUXT_HOST=0.0.0.0
+NUXT_PORT=3000
+
+```
 
 For detailed explanation on how things work, check out the [documentation](https://nuxtjs.org).
 
