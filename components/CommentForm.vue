@@ -32,7 +32,7 @@
               <h3 class="float-left font-weight-bold ma-1 text-uppercase username-title">YOU</h3>
 
               <div class="ml-auto flex-column-reverse mb-6 font-weight-bold">
-                <v-btn :disabled="!valid" color="success"  @click="validate">
+                <v-btn :disabled="!valid" color="#00F0FF"  @click="validate">
                   Send
                 </v-btn>
 

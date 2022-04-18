@@ -12,10 +12,10 @@
 
             <v-textarea name="input-7-1"
                 background-color="rgba(255, 255, 255, 0.1)"
-                rows="3"
+                rows="5"
                 filled label="Body here" auto-grow
                 v-model="body"
-                :counter="500"
+                :counter="600"
                 :rules="bodyRules"
                 required
                 single-line outlined
@@ -79,7 +79,7 @@ export default {
     body: '',
     bodyRules: [
       v => !!v || 'Name is required',
-      v => (v && v.length <= 500) || 'Name must be less than 500 characters',
+      v => (v && v.length <= 600) || 'Name must be less than 600 characters',
     ],
     user_id: '',
     post: [],
