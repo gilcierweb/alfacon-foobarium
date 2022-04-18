@@ -6,7 +6,7 @@
 
       <v-row>
 
-        <v-col col="12" xl="4" lg="6" md="6" sm="12" :key="id" v-for="{ id, user_id, title, body, user_name, user_posts_count, post_comments_count } in posts">
+        <v-col col="12" xl="4" lg="6" md="6" sm="12" :key="id" v-for="{ id, user_id, title, body, user_name, user_posts_count, post_comments_count} in posts">
           <nuxt-link :to="`posts/${id}`">
             <v-card class="card-bg card-size-min">
               <v-card-title>
@@ -39,7 +39,7 @@
         </v-col>
 
 
-        <v-col col="12">
+        <v-col col="12" xl="12" lg="12" md="12" sm="12">
           <v-card class="card-bg-dark">
             <v-card-title>Chunk Bytes</v-card-title>
             <v-card-subtitle>Learn Web Development In Chunks</v-card-subtitle>
@@ -61,11 +61,12 @@ import filter from '../../plugins/filters'
 
 export default {
   mixins: [global],
-  // data() {
-  //   return {
-  //       isLoadingIcon: 1,
-  //   }
-  // },
+  data() {
+    return {
+      classes: ['card-bg-dark', 'card-bg']
+
+    }
+  },
 
   async asyncData({$axios}) {
     let posts_users = []
@@ -103,7 +104,16 @@ export default {
     return {posts: posts_users}
 
   },
+  methods: {
+    getBgColor: function (index) {
 
+      let length = this.classes.length;
+      let turn = Math.floor(index / length);
+      let colorIndex = index - (turn * length);
+
+      return this.classes[colorIndex];
+    }
+  }
 };
 </script>
 
