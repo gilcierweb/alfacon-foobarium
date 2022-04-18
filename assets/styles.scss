@@ -1,73 +1,145 @@
 $font-family: 'Montserrat';
 
 .v-application {
-[class*='text-'] {
-  //color: #36405a;
-  font-family: $font-family, sans-serif !important;
-}
+  [class*='text-'] {
+    //color: #36405a;
+    font-family: $font-family, sans-serif !important;
+  }
+
   font-family: $font-family, sans-serif !important;
 }
 
 .theme--dark.v-application {
   background-color: var(--v-background-base, #41434B) !important;
 }
-.card-bg-details{
+
+.card-bg-dark {
+  background: #494B53 !important;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.25);
+  border-radius: 15px;
+}
+
+.card-bg-details {
   background-color: #41434B !important;
 }
-.card-size-min{
+
+.card-size-min {
   min-height: 426px !important;
 }
-.v-list-item:hover {
-  background-color: #2AA3AF !important;
-}
-.item--active::before {
-  opacity: 1;
-}
+
+//.v-list-item{
+//  text-transform: uppercase;
+//  margin-left: 20px;
+//  border-left: 10px solid #FA00FF !important;
+//}
+//
+//
 .theme--dark.v-list-item--active:hover::before, .theme--dark.v-list-item--active::before {
-  opacity: 1;
-  color: #00F0FF !important;
-}
-.v-list-item--link:before {
+  opacity: 0.8;
+  //margin-left: 10px;
+  border-left: 10px solid #FA00FF !important;
   color: #00F0FF !important;
   background-color: #41434B !important;
 }
-.menu-rectangle:hover{
-  width: 10px;
-  height: 60px;
-  background-color: #FA00FF !important;
+
+.theme--dark.v-list-item--active:hover::before, .theme--dark.v-list-item--active::before {
+  opacity: 0.8;
+  //margin-left: 10px;
+  border-left: 10px solid #FA00FF !important;
+  color: #00F0FF !important;
+  background-color: #41434B !important;
 }
-.menu-list{
-  background-color: #41434B;
-  &hover{
-    background-color: #2AA3AF;
-  }
+
+//.v-list-item--link:before {
+//  color: #00F0FF !important;
+//  background-color: #41434B !important;
+//
+//}
+//.v-list-item:hover {
+//  color: #00F0FF !important;
+//  background-color: #2AA3AF !important;
+//}
+.item--active::before {
+  color: #00F0FF !important;
 }
-.title-post-24{
+
+.v-list .v-list-item--active {
+  color: #00F0FF !important;
+}
+
+.v-list .v-list-item--active .v-list-item__content .v-list-item-title {
+  color: #00F0FF !important;
+}
+
+.v-list .v-list-item--active .v-list-item__action {
+  color: #00F0FF !important;
+}
+
+.v-list .v-list-item--active .v-list-item__content:hover {
+  color: #00F0FF !important;
+}
+
+.menu-list {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 29px;
+  text-align: right;
+  text-transform: uppercase;
+  margin-left: 30px;
+}
+
+.menu-list:hover {
+  margin-left: 20px;
+  border-left: 10px solid #FA00FF !important;
+}
+
+//.v-list-item-title{
+//   color: #00F0FF !important;
+//   background-color: #41434B !important;
+// }
+//.v-list-item-title:before{
+//  color: #00F0FF !important;
+//  background-color: #41434B !important;
+//}
+.v-list-item__content:before {
+  color: #00F0FF !important;
+}
+
+.active_list .v-list-group .v-list-item--active {
+  color: #00F0FF !important;
+}
+
+.title-post-24 {
   font-style: normal;
   font-size: 24px !important;
   line-height: 29px !important;
   letter-spacing: -0.1em;
 }
-.title-post-36{
+
+.title-post-36 {
   font-style: normal;
   font-size: 36px !important;
   line-height: 44px !important;
 }
-.post-user{
+
+.post-user {
   font-style: normal;
   font-weight: 700;
   font-size: 18px !important;
   line-height: 22px !important;
   letter-spacing: -0.1em !important;
 }
-.post-count{
+
+.post-count {
   font-family: 'Oxygen', sans-serif;
   font-style: normal;
   font-weight: 400 !important;
   font-size: 14px !important;
   line-height: 18px !important;
 }
-.post-body{
+
+.post-body {
   font-family: 'Oxygen', sans-serif;
   font-style: normal;
   font-weight: 400;
@@ -75,7 +147,8 @@ $font-family: 'Montserrat';
   line-height: 30px !important;
   color: #EEEEEE;
 }
-.post-body .post-body-16{
+
+.post-body .post-body-16 {
   font-family: 'Oxygen', sans-serif;
   font-style: normal;
   font-weight: 400;
@@ -83,19 +156,23 @@ $font-family: 'Montserrat';
   line-height: 20px;
   color: #EEEEEE;
 }
-.comment-rounded-circle{
+
+.comment-rounded-circle {
   width: 26px;
   height: 26px;
   background-color: #3B3D43;
   border-radius: 50%;
 }
+
 a.nuxt-link-active {
   //font-weight: bold;
 }
+
 /* exact link will show the primary color for only the exact matching link */
 a:hover.nuxt-link-exact-active {
   //color: #00c58e;
 }
+
 a,
 a:visited {
   text-decoration: none;
@@ -104,4 +181,8 @@ a:visited {
 
 a:hover {
   //color: #00c58e;
+}
+
+.input-custom-bg {
+  background-color: rgba(255, 255, 255, 0.1)
 }

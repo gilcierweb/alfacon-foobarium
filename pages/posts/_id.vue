@@ -11,7 +11,7 @@
           <div class="card-bg-details">
             <div><h1 class="font-weight-bold text-uppercase title-post-36">{{ post.title }}</h1></div>
             <div class="user-box mt-6 d-flex">
-              <NuxtLink :to="`/users/${post.user_id}`" color="white">
+              <NuxtLink :to="`/users/${post.user_id}`" >
                 <div class="float-left">
                   <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <circle cx="20" cy="20" r="20" fill="#00F0FF"/>
@@ -19,11 +19,11 @@
                     <path fill-rule="evenodd" clip-rule="evenodd" d="M7.69238 35.7658V27.6924C7.69238 23.6001 15.8924 21.5386 20.0001 21.5386C24.1078 21.5386 32.3078 23.6001 32.3078 27.6924V35.7657C28.914 38.4189 24.6417 40.0001 20 40.0001C15.3584 40.0001 11.0861 38.4189 7.69238 35.7658Z" fill="white"/>
                   </svg>
                 </div>
-                <h3 class="float-left text-h5 font-weight-bold card-title-color ma-3 text-uppercase text--white">
+                <h3 class="float-left username-title font-weight-bold card-title-color ma-2 text-uppercase " color="white">
                   {{ post.user_name }}
                 </h3>
               </NuxtLink>
-              <span class="float-left card-title-span-color ma-3 post-count">{{ post.user_posts_count }} posts</span>
+              <span class="float-left card-title-span-color ma-3 username-comments">{{ post.user_posts_count }}  posts</span>
             </div>
             <div class="post-body">
               <p>
@@ -92,5 +92,22 @@ export default {
 <style scoped>
 .user-box {
 
+}
+.username-title{
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 22px;
+  letter-spacing: -0.1em;
+  text-transform: uppercase;
+  color: #DDDDDD;
+}
+.username-comments{
+  font-family: 'Oxygen';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  color: #CCCCCC;
 }
 </style>

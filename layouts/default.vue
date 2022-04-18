@@ -10,9 +10,8 @@
         </nuxt-link>
         <v-divider color="white"></v-divider>
 
-        <v-list-item v-for="(item, i) in items" :key="i" :to="item.to" router exact>
+        <v-list-item v-for="(item, i) in items" :key="i" :to="item.to" router exact class="menu-list text-right">
           <v-list-item-action>
-            <span class="menu-rectangle"></span>
             <v-icon>{{ item.icon }}</v-icon>
           </v-list-item-action>
           <v-list-item-content>
@@ -25,20 +24,17 @@
       <template v-slot:append>
 
         <div class="pa-2">
-          <nuxt-link to="/">
-            <v-list-item class="mt-2 mb-6">
-              <span class="menu-rectangle pa-0"></span>
+          <nuxt-link to="/posts/show">
+            <v-list-item class="mt-2 mb-6 menu-list text-right">
+              <span class="pa-0"></span>
               <v-list-item-title>My Posts</v-list-item-title>
             </v-list-item>
           </nuxt-link>
-          <nuxt-link to="/">
-            <v-list-item class="mt-2 mb-6">
-              <v-list-item-title>My Posts</v-list-item-title>
+          <nuxt-link to="/posts/comments">
+            <v-list-item class="mt-2 mb-6 menu-list text-right">
+              <v-list-item-title>My Comments</v-list-item-title>
             </v-list-item>
           </nuxt-link>
-          <v-btn block>
-            Logout
-          </v-btn>
         </div>
       </template>
     </v-navigation-drawer>
@@ -85,7 +81,7 @@
     </v-main>
 
     <v-footer :absolute="!fixed" app>
-      <span>&copy; {{ new Date().getFullYear() }}</span>
+      <span>Copyright &copy; {{ new Date().getFullYear() }} - All Rights Reserved - <a href="https://gilcierweb.com.br" target="_blank">gilcierweb.com.br</a> - Desenvolvido por: GilcierWeb - Site criado com o <a href="https://nuxtjs.org/" target="_blank">Nuxt.js</a></span>
     </v-footer>
 
   </v-app>
@@ -118,11 +114,6 @@ export default {
           to: '/users'
         },
         {
-          icon: 'mdi-chart-bubble',
-          title: 'Inspire',
-          to: '/inspire'
-        },
-        {
           icon: 'mdi-note-edit-outline',
           title: 'My Posts',
           to: '/posts/show'
@@ -131,7 +122,22 @@ export default {
           icon: 'mdi-comment-processing-outline',
           title: 'My Comments',
           to: '/posts/comments'
-        }
+        },
+        {
+          icon: 'mdi-account-plus-outline',
+          title: 'New User',
+          to: '/users/new'
+        },
+        {
+          icon: 'mdi-note-plus-outline',
+          title: 'New Post',
+          to: '/posts/new'
+        },
+        {
+          icon: 'mdi-chart-bubble',
+          title: 'Inspire',
+          to: '/inspire'
+        },
       ],
       miniVariant: false,
       right: true,

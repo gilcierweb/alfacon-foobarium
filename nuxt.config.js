@@ -3,7 +3,7 @@ import colors from 'vuetify/es5/util/colors'
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    titleTemplate: '%s - alfacon-forum',
+    titleTemplate: '%s - alfacon-forum - GilcierWeb',
     title: 'alfacon-forum',
     htmlAttrs: {
       lang: 'pt-BR'
@@ -41,7 +41,14 @@ export default {
   modules: [
     '@nuxtjs/axios'
   ],
-
+  // publicRuntimeConfig: {
+  //   baseURL: process.env.BASE_URL,
+  //   host: process.env.NUXT_HOST,
+  //   port: process.env.NUXT_PORT,
+  // },
+  // privateRuntimeConfig: {
+  //   ACCESS_TOKEN: process.env.ACCESS_TOKEN
+  // },
   axios: {
     baseURL: process.env.BASE_URL,
   },

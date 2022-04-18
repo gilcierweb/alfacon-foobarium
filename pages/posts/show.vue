@@ -2,16 +2,17 @@
   <div>
     <v-container class="background-dark">
       <HeaderPages title="My posts"></HeaderPages>
+
       <v-row>
-        <v-col col="12">
-          <v-card class="card-bg-dark">
-            <v-card-title>Chunk Bytes</v-card-title>
-            <v-card-subtitle>Learn Web Development In Chunks</v-card-subtitle>
-            <v-card-text
-            >Joke of the Day: debugging is removing the needles from the haystack.
-            </v-card-text
-            >
-          </v-card>
+        <v-col xl="6" lg="6" md="6" sm="12" :key="id" v-for="{ id, user_id, title, body} in user_posts">
+          <NuxtLink :to="`/posts/${id}`">
+            <v-card class="card-bg-dark">
+              <v-card-title><h1 class="font-weight-bold text-uppercase title-post-24" :title="title">
+                {{ title | truncate(70, '...') }}</h1>
+              </v-card-title>
+              <v-card-text class="post-body-16">{{ body| truncate(230, '...') }}</v-card-text>
+            </v-card>
+          </NuxtLink>
         </v-col>
       </v-row>
     </v-container>
@@ -19,7 +20,15 @@
 </template>
 
 <script>
-export default {}
+export default {
+  async asyncData({$axios, params}) {
+
+    const ACCESS_TOKEN = process.env.NUXT_ENV_ACCESS_TOKEN
+    const user_posts = await $axios.$get(`posts?access-token=/${ACCESS_TOKEN}`)
+
+    return {user_posts: user_posts,}
+  },
+}
 </script>
 
 <style scoped>

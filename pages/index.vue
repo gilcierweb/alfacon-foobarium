@@ -10,14 +10,15 @@
           Welcome to the FOOBARIUM
         </v-card-title>
         <v-card-text>
-          <p>Application developer with Vue.js, Nuxt.js, Node.js, vuetify UI, Docker and Docker Compose.</p>
+          <p>Application implemented with Vue.js, Nuxt.js, Node.js, Vuetify UI, Docker and Docker Compose.</p>
           <p>
-            <NuxtLink to="posts">
+            Links App: <br>
+            <NuxtLink to="posts" title="Posts">
               POSTS
             </NuxtLink>
           </p>
           <p>
-            <NuxtLink to="users">
+            <NuxtLink to="users" title="Users">
               USERS
             </NuxtLink>
           </p>

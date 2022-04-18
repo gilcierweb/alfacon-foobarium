@@ -3,28 +3,35 @@
     <v-container>
       <v-row>
         <v-col col="12" sm="12">
-          <h3 class="text-uppercase mt-4 mb-5">New Post</h3>
+          <h3 class="text-uppercase mt-4 mb-5">New User</h3>
           <v-form ref="form" v-model="valid" lazy-validation>
 
-            <v-text-field v-model="title" :counter="248" :rules="titleRules" label="Title"
+            <v-text-field v-model="name" :counter="248" :rules="nameRules" label="Name"
                 required single-line outlined background-color="rgba(255, 255, 255, 0.1)"
             ></v-text-field>
 
-            <v-textarea name="input-7-1"
-                background-color="rgba(255, 255, 255, 0.1)"
-                rows="3"
-                filled label="Body here" auto-grow
-                v-model="body"
-                :counter="500"
-                :rules="bodyRules"
-                required
-                single-line outlined
-            ></v-textarea>
+            <v-text-field v-model="email" :rules="emailRules"
+                label="E-mail" required single-line outlined background-color="rgba(255, 255, 255, 0.1)"></v-text-field>
 
-            <v-text-field v-model="user_id" :counter="10" label="User ID"
-                required single-line outlined background-color="rgba(255, 255, 255, 0.1)"
-            ></v-text-field>
-
+            <v-row>
+              <v-col cols="6">
+                <v-select v-model="gender"
+                    :items="items"
+                    :rules="[v => !!v || 'Gender is required']"
+                    label="Gender"
+                    required single-line outlined background-color="rgba(255, 255, 255, 0.1)"
+                ></v-select>
+              </v-col>
+              <v-col cols="6">
+                <v-select
+                    v-model="status"
+                    :items="items_status"
+                    :rules="[v => !!v || 'Status is required']"
+                    label="Status"
+                    required single-line outlined background-color="rgba(255, 255, 255, 0.1)"
+                ></v-select>
+              </v-col>
+            </v-row>
             <v-btn :disabled="!valid"
                 color="success" class="mr-4" @click="validate">
               Save
@@ -36,19 +43,10 @@
 
             <v-btn color="warning" @click="resetValidation">
               Reset Validation
+              <p>{{user | json}}</p>
             </v-btn>
+            <p>{{user | json}}</p>
           </v-form>
-
-        </v-col>
-
-        <v-col col="12" sm="12" v-if="post" :key="id" v-for="{ id, user_id, title, body } in post">
-          <NuxtLink :to="`posts/${id}`">
-            <v-card class="card-bg-dark">
-              <v-card-title><h1 class="font-weight-bold text-uppercase title-post-24" :title="title">{{ title }} - {{ id }} - {{ user_id }}</h1></v-card-title>
-              <v-card-text class="post-body-16"> {{ body }}
-              </v-card-text>
-            </v-card>
-          </NuxtLink>
         </v-col>
       </v-row>
     </v-container>
@@ -61,28 +59,33 @@
         </v-btn>
       </template>
     </v-snackbar>
+
   </div>
 </template>
 
 <script>
-// id, user_id, title, body,
-// /public/v2/users/100/posts
+
+// '{"name":"Tenali Ramakrishna", "gender":"male", "email":"tenali.ramakrishna@15ce.com", "status":"active"}'
 export default {
-  name: 'FormPost',
   data: () => ({
     valid: true,
-    title: '',
-    titleRules: [
+    name: '',
+    nameRules: [
       v => !!v || 'Name is required',
       v => (v && v.length <= 248) || 'Name must be less than 248 characters',
     ],
-    body: '',
-    bodyRules: [
-      v => !!v || 'Name is required',
-      v => (v && v.length <= 500) || 'Name must be less than 500 characters',
+    email: '',
+    emailRules: [
+      v => !!v || 'E-mail is required',
+      v => /.+@.+\..+/.test(v) || 'E-mail must be valid',
     ],
-    user_id: '',
-    post: [],
+    gender: null,
+    items: [
+      'male',
+      'female',
+    ],
+    status: null,
+    items_status: ['active', 'inactive'],
     snackbar: false,
     text: `Dados gravados com sucesso!`,
   }),
@@ -100,13 +103,12 @@ export default {
         }
       }
 
-      const data = {title: this.title, body: this.body, user_id: this.user_id} // required on API
+      const data = {name: this.name, email: this.email, gender: this.gender, status: this.status,} // required on API
 
-      let post = await this.$axios.post(`users/${this.user_id}/posts`, data, headers)
+      const user = await this.$axios.post(`/users`, data, headers)
       this.snackbar = false
       this.reset()
-      this.post = post
-      // return {post}
+      return {user}
     },
     reset() {
       this.$refs.form.reset()
